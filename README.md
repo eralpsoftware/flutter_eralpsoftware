@@ -1,14 +1,56 @@
-# eralpsoftware
+# Eralp Software package for Flutter
 
-A new Flutter package project.
+A Flutter package for help Eralp Software developers.
 
-## Getting Started
+## Installation
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+First, add `eralpsoftware` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### Example
+
+``` dart
+import 'package:eralpsoftware/eralpsoftware.dart';
+import 'package:flutter/material.dart';
+
+class MyExample extends StatefulWidget {
+  const MyExample({Key key}) : super(key: key);
+
+  @override
+  _MyExampleState createState() => _MyExampleState();
+}
+
+class _MyExampleState extends State<MyExample> {
+  final Calculator _calculator = Calculator();
+
+  int _count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Example'),
+      ),
+      body: Container(
+        child: Center(
+          child: Text("$_count"),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: onPressed,
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+
+  void onPressed() {
+    setState(() {
+      _count += _calculator.addOne(_count);
+    });
+  }
+}
+```
+
+## Feedback
+
+Please feel free to [give us any feedback](https://github.com/eralpsoftware/flutter_eralpsoftware/issues)
+helping support this package!
