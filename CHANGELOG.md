@@ -5,11 +5,11 @@
 ## [0.0.2] - Second version
 
 * Second version
-  
+
 ## [0.0.3] - Third version
 
 * Third version
-  
+
 ## [0.0.4] - Github version added
 
 * Github version added
