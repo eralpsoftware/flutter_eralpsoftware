@@ -13,3 +13,11 @@
 ## [0.0.4] - Github version added
 
 * Github version added
+
+## [0.0.5] - Authors
+
+* Authors added
+
+## [0.0.6] - Example
+
+* Example added
