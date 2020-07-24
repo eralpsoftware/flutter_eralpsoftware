@@ -34,7 +34,12 @@ class _HomePageState extends State<HomePage> {
                 Eralp.showSnackBar(
                   snackBar: SnackBar(
                     backgroundColor: Theme.of(context).primaryColor,
-                    content: Text("primary background color snackbar"),
+                    content: Text(
+                      "primary background color snackbar",
+                      style: Theme.of(context).textTheme.headline5.copyWith(
+                            color: Colors.white,
+                          ),
+                    ),
                   ),
                 );
               },
@@ -53,21 +58,13 @@ class _HomePageState extends State<HomePage> {
             ),
             RaisedButton(
               onPressed: () {
-                Eralp.showAlertDialog(
-                  AlertDialog(
-                    title: Text("simple alert dialog"),
-                  ),
-                );
+                Eralp.showAlertDialog();
               },
               child: Text("show dialog"),
             ),
             RaisedButton(
               onPressed: () {
-                Eralp.showUndismissibleAlertDialog(
-                  AlertDialog(
-                    title: Text("simple undismissible alert dialog"),
-                  ),
-                );
+                Eralp.showUndismissibleAlertDialog();
               },
               child: Text("show undismissible dialog"),
             ),

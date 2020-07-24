@@ -1,4 +1,5 @@
 import 'package:eralpsoftware/eralpsoftware.dart';
+import 'package:example/route_generator/route_generator.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // navigatorKey: Eralp.navigatorKey(),
       builder: (context, child) {
         return Eralp.builder(
           context: context,
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: "/",
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

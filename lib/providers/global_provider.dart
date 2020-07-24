@@ -31,4 +31,11 @@ class GlobalProvider {
     _globalScaffoldKey = scaffoldKey;
     print("setted globalScaffoldKey");
   }
+
+  GlobalKey<NavigatorState> _navigatorKey;
+  GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
+  set navigatorKey(GlobalKey<NavigatorState> nKey) {
+    _navigatorKey = nKey;
+    print("setted navigatorKey");
+  }
 }

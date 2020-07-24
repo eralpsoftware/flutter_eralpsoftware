@@ -90,31 +90,59 @@ class _EralpSoftState extends State<EralpSoft> {
 class Eralp {
   static Widget builder(
       {@required BuildContext context, @required Widget child}) {
-    return EralpSoft(
-      context: context,
-      child: child,
+    return MaterialApp(
+      home: EralpSoft(
+        context: context,
+        child: child,
+      ),
     );
+  }
+
+  static GlobalKey<NavigatorState> navigatorKey() {
+    final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+    _globalProvider.navigatorKey = _navigatorKey;
+    return _navigatorKey;
   }
 
   static void showSnackBar({@required SnackBar snackBar}) {
     _globalProvider.globalScaffoldKey.currentState.showSnackBar(snackBar);
   }
 
-  static void showAlertDialog(AlertDialog alertDialog) {
+  static void showAlertDialog() {
     showDialog(
-      context: _globalProvider.globalScaffoldKey.currentContext,
+      context: _globalProvider.globalContext,
       builder: (context) {
-        return alertDialog;
+        return AlertDialog(
+          title: Text("simple alert dialog"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("ok"),
+              onPressed: () {
+                Navigator.pop(_globalProvider.globalContext);
+              },
+            ),
+          ],
+        );
       },
     );
   }
 
-  static void showUndismissibleAlertDialog(AlertDialog alertDialog) {
+  static void showUndismissibleAlertDialog() {
     showDialog(
       barrierDismissible: false,
-      context: _globalProvider.globalScaffoldKey.currentContext,
+      context: _globalProvider.globalContext,
       builder: (context) {
-        return alertDialog;
+        return AlertDialog(
+          title: Text("undismissible alert dialog"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("ok"),
+              onPressed: () {
+                Navigator.pop(_globalProvider.globalContext);
+              },
+            ),
+          ],
+        );
       },
     );
   }
