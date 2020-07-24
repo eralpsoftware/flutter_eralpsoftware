@@ -1,4 +1,3 @@
-import 'package:eralpsoftware/eralpsoftware.dart';
 import 'package:flutter/material.dart';
 
 class MyExample extends StatefulWidget {
@@ -9,7 +8,6 @@ class MyExample extends StatefulWidget {
 }
 
 class _MyExampleState extends State<MyExample> {
-  final Calculator _calculator = Calculator();
 
   int _count = 0;
 
@@ -33,7 +31,6 @@ class _MyExampleState extends State<MyExample> {
 
   void onPressed() {
     setState(() {
-      _count += _calculator.addOne(_count);
     });
   }
 }
