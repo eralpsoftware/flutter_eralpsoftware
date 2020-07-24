@@ -1,4 +1,4 @@
-## [0.0.1] - First version
+# [0.0.1] - First version
 
 * First version
 
@@ -61,3 +61,7 @@
 ## [0.1.3] MaterialApp
 
 * debugShowCheckedModeBanner setted false.
+
+## [0.1.4] New features
+
+* Eralp splash page, eralp validators and progressbar added.
