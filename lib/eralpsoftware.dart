@@ -41,9 +41,7 @@ class XdHelper {
     @required Size xdContainerSize,
     @required Size xdScreenSize,
   }) {
-    double sizeRatio = sqrt(pow(size.height, 2) + pow(size.width, 2));
-    double xdRatio =
-        sqrt(pow(xdScreenSize.height, 2) + pow(xdScreenSize.width, 2));
+    sqrt(pow(xdScreenSize.height, 2) + pow(xdScreenSize.width, 2));
     return Size(
       (xdContainerSize.width * size.width) / (xdScreenSize.width),
       (xdContainerSize.height * size.height) / (xdScreenSize.height),
@@ -91,6 +89,7 @@ class Eralp {
   static Widget builder(
       {@required BuildContext context, @required Widget child}) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: EralpSoft(
         context: context,
         child: child,
@@ -108,17 +107,28 @@ class Eralp {
     _globalProvider.globalScaffoldKey.currentState.showSnackBar(snackBar);
   }
 
-  static void showAlertDialog() {
+  static void showAlertDialog({
+    bool dismissible = true,
+    Widget title,
+    Widget content,
+    Color backgroundColor = Colors.white,
+    String okString,
+    Function onOkPressed,
+  }) {
     showDialog(
+      barrierDismissible: dismissible,
       context: _globalProvider.globalContext,
       builder: (context) {
         return AlertDialog(
-          title: Text("simple alert dialog"),
+          backgroundColor: backgroundColor,
+          title: title,
+          content: content,
           actions: <Widget>[
             FlatButton(
-              child: Text("ok"),
+              child: Text(okString),
               onPressed: () {
                 Navigator.pop(_globalProvider.globalContext);
+                onOkPressed();
               },
             ),
           ],

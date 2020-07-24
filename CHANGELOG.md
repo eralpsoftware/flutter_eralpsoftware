@@ -46,6 +46,18 @@
 
 * Example added
 
-## [0.1] Release
+## [0.1.0] Release
 
 * Snackbars, Dialogs added, bug fixed.
+
+## [0.1.1] Release
+
+* Bug fixed.
+
+## [0.1.2] Release
+
+* Alert dialog become customizable now.
+
+## [0.1.3] MaterialApp
+
+* debugShowCheckedModeBanner setted false.
