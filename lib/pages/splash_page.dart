@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -9,8 +11,8 @@ class SplashPage extends StatelessWidget {
       child: Container(
         child: Center(
           child: Image.asset(
-            "lib/assets/images/EralpSoftware.png",
-            // package: "eralpsoftware",
+            AssetImage("lib/assets/images/EralpSoftware.png").assetName,
+            package: 'eralpsoftware',
           ),
         ),
       ),
