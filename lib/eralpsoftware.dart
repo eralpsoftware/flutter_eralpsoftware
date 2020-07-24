@@ -137,6 +137,24 @@ class Eralp {
     );
   }
 
+  static void showProgress() {
+    showDialog(
+      barrierDismissible: false,
+      context: _globalProvider.globalContext,
+      builder: (context) {
+        Future.delayed(Duration(seconds: 3), () {
+          Navigator.pop(_globalProvider.globalContext);
+          print("asdasd");
+        });
+        return AlertDialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          content: Center(child: CircularProgressIndicator()),
+        );
+      },
+    );
+  }
+
   static void showUndismissibleAlertDialog() {
     showDialog(
       barrierDismissible: false,

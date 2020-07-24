@@ -68,6 +68,12 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text("show undismissible dialog"),
             ),
+            RaisedButton(
+              onPressed: () {
+                Eralp.showProgress();
+              },
+              child: Text("start untouchable progressbar for 3 seconds"),
+            ),
           ],
         ),
       ),
