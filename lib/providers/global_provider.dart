@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class GlobalProvider {
@@ -8,7 +10,7 @@ class GlobalProvider {
   }
 
   GlobalProvider._internal() {
-    print("DeviceConfig oluşturuldu");
+    log("DeviceConfig oluşturuldu [eralpsoftware.dart]");
   }
 
   Size _size;

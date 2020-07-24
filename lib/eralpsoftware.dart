@@ -1,8 +1,12 @@
 library eralpsoftware;
 
+import 'dart:async';
 import 'dart:math';
 
+import 'package:eralpsoftware/pages/splash_page.dart';
 import 'package:eralpsoftware/providers/global_provider.dart';
+import 'package:eralpsoftware/providers/stream_provider.dart';
+import 'package:eralpsoftware/validators/validators.dart';
 import 'package:flutter/material.dart';
 
 final GlobalProvider _globalProvider = GlobalProvider();
@@ -155,6 +159,39 @@ class Eralp {
     );
   }
 
+  static void startProgress({@required int maxSecond}) {
+    StreamProvider _streamProvider = StreamProvider();
+    _streamProvider.isLoading = true;
+    int count = 0;
+
+    showDialog(
+      barrierDismissible: false,
+      context: _globalProvider.globalContext,
+      builder: (context) {
+        Timer.periodic(const Duration(milliseconds: 250), (Timer t) {
+          count++;
+          if (!_streamProvider.isLoading) {
+            t.cancel();
+            Navigator.pop(_globalProvider.globalContext);
+          } else if (count >= maxSecond * 4) {
+            t.cancel();
+            Navigator.pop(_globalProvider.globalContext);
+          }
+        });
+
+        return AlertDialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          content: Center(child: CircularProgressIndicator()),
+        );
+      },
+    );
+  }
+
+  static void stopProgress() {
+    StreamProvider().isLoading = false;
+  }
+
   static void showUndismissibleAlertDialog() {
     showDialog(
       barrierDismissible: false,
@@ -173,5 +210,14 @@ class Eralp {
         );
       },
     );
+  }
+
+  static RegisterValidator validator() {
+    RegisterValidator _validator = RegisterValidator();
+    return _validator;
+  }
+
+  static Widget splashPage() {
+    return SplashPage();
   }
 }

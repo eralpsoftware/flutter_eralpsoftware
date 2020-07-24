@@ -16,63 +16,19 @@ class _HomePageState extends State<HomePage> {
         title: Text('Home Page'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: <Widget>[
             RaisedButton(
-              onPressed: () {
-                Eralp.showSnackBar(
-                  snackBar: SnackBar(
-                    content: Text("normal snackbar"),
-                  ),
-                );
-              },
-              child: Text("normal snackbar"),
+              onPressed: () => Navigator.pushNamed(context, "/contextPage"),
+              child: Text("go to the context page"),
             ),
             RaisedButton(
-              onPressed: () {
-                Eralp.showSnackBar(
-                  snackBar: SnackBar(
-                    backgroundColor: Theme.of(context).primaryColor,
-                    content: Text(
-                      "primary background color snackbar",
-                      style: Theme.of(context).textTheme.headline5.copyWith(
-                            color: Colors.white,
-                          ),
-                    ),
-                  ),
-                );
-              },
-              child: Text("primary background color snackbar"),
+              onPressed: () => Navigator.pushNamed(context, "/validatorPage"),
+              child: Text("go to the validator page"),
             ),
             RaisedButton(
-              onPressed: () {
-                Eralp.showSnackBar(
-                  snackBar: SnackBar(
-                    backgroundColor: Theme.of(context).errorColor,
-                    content: Text("error snackbar"),
-                  ),
-                );
-              },
-              child: Text("error snackbar"),
-            ),
-            RaisedButton(
-              onPressed: () {
-                Eralp.showAlertDialog();
-              },
-              child: Text("show dialog"),
-            ),
-            RaisedButton(
-              onPressed: () {
-                Eralp.showUndismissibleAlertDialog();
-              },
-              child: Text("show undismissible dialog"),
-            ),
-            RaisedButton(
-              onPressed: () {
-                Eralp.showProgress();
-              },
-              child: Text("start untouchable progressbar for 3 seconds"),
+              onPressed: () => Navigator.pushNamed(context, "/splashPage"),
+              child: Text("go to the splash page"),
             ),
           ],
         ),
