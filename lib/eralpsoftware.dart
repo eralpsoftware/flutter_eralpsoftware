@@ -96,12 +96,26 @@ class Eralp {
     );
   }
 
-  static void showSnackBar({@required String text}) {
-    _globalProvider.globalScaffoldKey.currentState.showSnackBar(
-      SnackBar(
-        duration: Duration(seconds: 5),
-        content: Container(child: Text("$text")),
-      ),
+  static void showSnackBar({@required SnackBar snackBar}) {
+    _globalProvider.globalScaffoldKey.currentState.showSnackBar(snackBar);
+  }
+
+  static void showAlertDialog(AlertDialog alertDialog) {
+    showDialog(
+      context: _globalProvider.globalScaffoldKey.currentContext,
+      builder: (context) {
+        return alertDialog;
+      },
+    );
+  }
+
+  static void showUndismissibleAlertDialog(AlertDialog alertDialog) {
+    showDialog(
+      barrierDismissible: false,
+      context: _globalProvider.globalScaffoldKey.currentContext,
+      builder: (context) {
+        return alertDialog;
+      },
     );
   }
 }
