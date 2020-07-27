@@ -73,3 +73,7 @@
 ## [0.1.51] MaterialApp debugmode
 
 * Fixed debug mode check banner.
+  
+## [0.1.52] MaterialApp
+
+* Fixed debug mode check banner.
