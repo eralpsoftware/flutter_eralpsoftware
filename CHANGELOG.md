@@ -84,4 +84,8 @@
 
 ## [0.1.54] Scaffold key
 
-* Fixing scaffold key.
+* Fixed scaffold key.
+
+## [0.1.6] Progress bar
+
+* Progress bar take child now.

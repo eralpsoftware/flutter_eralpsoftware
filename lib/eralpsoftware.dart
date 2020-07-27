@@ -159,7 +159,7 @@ class Eralp {
     );
   }
 
-  static void startProgress({@required int maxSecond}) {
+  static void startProgress({@required int maxSecond, @required Widget child}) {
     StreamProvider _streamProvider = StreamProvider();
     _streamProvider.isLoading = true;
     int count = 0;
@@ -182,7 +182,7 @@ class Eralp {
         return AlertDialog(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          content: Center(child: CircularProgressIndicator()),
+          content: child,
         );
       },
     );
