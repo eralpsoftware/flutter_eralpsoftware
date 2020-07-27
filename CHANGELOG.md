@@ -65,3 +65,7 @@
 ## [0.1.4] New features
 
 * Eralp splash page, eralp validators and progressbar added.
+  
+## [0.1.5] MaterialApp edited
+
+* Fixed theme and context problem on MaterialApp.

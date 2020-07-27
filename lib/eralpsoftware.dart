@@ -55,7 +55,7 @@ class XdHelper {
 
 class EralpSoft extends StatefulWidget {
   final BuildContext context;
-  final Widget child;
+  final MaterialApp child;
   EralpSoft({
     Key key,
     @required this.context,
@@ -82,9 +82,11 @@ class _EralpSoftState extends State<EralpSoft> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _globalScaffoldKey,
-      body: widget.child,
+    return MaterialApp(
+      home: Scaffold(
+        key: _globalScaffoldKey,
+        body: widget.child,
+      ),
     );
   }
 }
