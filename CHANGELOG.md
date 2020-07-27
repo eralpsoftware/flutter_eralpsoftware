@@ -80,4 +80,8 @@
   
 ## [0.1.53] Scaffold key
 
-* Fixed scaffold key.
+* Fixing scaffold key.
+
+## [0.1.54] Scaffold key
+
+* Fixing scaffold key.

@@ -82,12 +82,9 @@ class _EralpSoftState extends State<EralpSoft> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        key: _globalScaffoldKey,
-        body: widget.child,
-      ),
+    return Scaffold(
+      key: _globalScaffoldKey,
+      body: widget.child,
     );
   }
 }
@@ -95,9 +92,12 @@ class _EralpSoftState extends State<EralpSoft> {
 class Eralp {
   static Widget builder(
       {@required BuildContext context, @required Widget child}) {
-    return EralpSoft(
-      context: context,
-      child: child,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: EralpSoft(
+        context: context,
+        child: child,
+      ),
     );
   }
 
