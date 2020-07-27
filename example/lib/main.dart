@@ -12,13 +12,6 @@ class MyApp extends StatelessWidget {
     return Eralp.builder(
       context: context,
       child: MaterialApp(
-        // navigatorKey: Eralp.navigatorKey(),
-        // builder: (context, child) {
-        //   return Eralp.builder(
-        //     context: context,
-        //     child: child,
-        //   );
-        // },
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.red,

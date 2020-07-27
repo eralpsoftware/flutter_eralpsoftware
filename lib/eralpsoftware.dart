@@ -95,12 +95,9 @@ class _EralpSoftState extends State<EralpSoft> {
 class Eralp {
   static Widget builder(
       {@required BuildContext context, @required Widget child}) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: EralpSoft(
-        context: context,
-        child: child,
-      ),
+    return EralpSoft(
+      context: context,
+      child: child,
     );
   }
 
