@@ -83,6 +83,8 @@ class _EralpSoftState extends State<EralpSoft> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
       key: _globalScaffoldKey,
       body: widget.child,
     );

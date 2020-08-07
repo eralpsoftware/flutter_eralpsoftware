@@ -93,3 +93,7 @@
 ## [0.1.55] Progress bar
 
 * Progress bar take child now.
+  
+## [0.1.56] Scaffold
+
+* resizeToAvoidBottomInset setted false.
