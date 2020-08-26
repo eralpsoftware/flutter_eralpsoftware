@@ -174,10 +174,14 @@ class Eralp {
           count++;
           if (!_streamProvider.isLoading) {
             t.cancel();
-            Navigator.pop(_globalProvider.globalContext);
+            // Navigator.pop(_globalProvider.globalContext);
+            Navigator.of(_globalProvider.globalContext, rootNavigator: true)
+                .pop();
           } else if (count >= maxSecond * 4) {
             t.cancel();
-            Navigator.pop(_globalProvider.globalContext);
+            // Navigator.pop(_globalProvider.globalContext);
+            Navigator.of(_globalProvider.globalContext, rootNavigator: true)
+                .pop();
           }
         });
 
@@ -192,6 +196,32 @@ class Eralp {
 
   static void stopProgress() {
     StreamProvider().isLoading = false;
+  }
+
+  static void startProgressForXSecond(
+      {@required double second, @required Widget child}) {
+    int count = 0;
+
+    showDialog(
+      barrierDismissible: false,
+      context: _globalProvider.globalContext,
+      builder: (context) {
+        Timer.periodic(const Duration(milliseconds: 250), (Timer t) {
+          count++;
+          if (count >= (second * 4).toInt()) {
+            t.cancel();
+            Navigator.of(_globalProvider.globalContext, rootNavigator: true)
+                .pop();
+          }
+        });
+
+        return AlertDialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          content: child,
+        );
+      },
+    );
   }
 
   static void showUndismissibleAlertDialog() {

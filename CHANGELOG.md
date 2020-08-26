@@ -97,3 +97,7 @@
 ## [0.1.56] Scaffold
 
 * resizeToAvoidBottomInset setted false.
+  
+## [0.1.57] Rootnav
+
+* Added rootNavigator:true to dialogs.
