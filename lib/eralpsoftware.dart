@@ -3,6 +3,7 @@ library eralpsoftware;
 import 'dart:async';
 import 'dart:math';
 
+import 'package:eralpsoftware/eralp_notification/eralp_notification.dart';
 import 'package:eralpsoftware/pages/splash_page.dart';
 import 'package:eralpsoftware/providers/global_provider.dart';
 import 'package:eralpsoftware/providers/stream_provider.dart';
@@ -251,5 +252,22 @@ class Eralp {
 
   static Widget splashPage() {
     return SplashPage();
+  }
+
+  static void showEralpNotification({
+    @required Widget child,
+    Duration duration,
+    bool showProgressIndicator,
+    final Color progressBackgroundColor,
+    final Color progressValueColor,
+  }) {
+    final _showEralpBar = ShowEralpNotification(
+      child: child,
+      duration: duration ?? null,
+      showProgressIndicator: showProgressIndicator ?? false,
+      progressBackgroundColor: progressBackgroundColor,
+      progressValueColor: progressValueColor,
+    );
+    _showEralpBar.show(_globalProvider.globalContext);
   }
 }

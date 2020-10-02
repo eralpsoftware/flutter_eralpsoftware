@@ -101,3 +101,7 @@
 ## [0.1.57] Rootnav
 
 * Added rootNavigator:true to dialogs.
+  
+## [0.1.58] Eralp Notification Bar
+
+* Added Eralp Notification Bar.
