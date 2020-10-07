@@ -105,3 +105,7 @@
 ## [0.1.58] Eralp Notification Bar
 
 * Added Eralp Notification Bar.
+  
+## [0.1.59] Progressbar
+
+* Prevent back button on progressbar.
