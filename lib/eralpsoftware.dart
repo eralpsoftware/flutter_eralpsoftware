@@ -221,10 +221,15 @@ class Eralp {
           }
         });
 
-        return AlertDialog(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          content: child,
+        return WillPopScope(
+          onWillPop: () {
+            return Future.value(false);
+          },
+          child: AlertDialog(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            content: child,
+          ),
         );
       },
     );

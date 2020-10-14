@@ -109,3 +109,7 @@
 ## [0.1.59] Progressbar
 
 * Prevent back button on progressbar.
+  
+## [0.1.60] Progressbar
+
+* Prevent back button on progressbar v2.
