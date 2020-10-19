@@ -113,3 +113,7 @@
 ## [0.1.60] Progressbar
 
 * Prevent back button on progressbar v2.
+
+## [0.1.61] Eralp Notification Bar
+
+* Notification animation added.

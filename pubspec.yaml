@@ -1,6 +1,6 @@
 name: eralpsoftware
 description: Bu paket EralpSoftware'nin resmi açık kaynak kütüphanesidir. İçerisinde şirkette kullandığımız widget'ler ve helper'ler yer almaktadır.
-version: 0.1.60
+version: 0.1.61
 authors:
   - Cem Ergin <cem.ergin@eralpsoftware.com>
   - Burak Can Kurtarır <burak.kurtarir@eralpsoftware.com>
