@@ -57,7 +57,7 @@ class _EralpNotificationWidgetState extends State<EralpNotificationWidget>
   Widget build(BuildContext context) {
     final _mq = MediaQuery.of(context);
     return Positioned(
-      top: _mq.padding.top + kToolbarHeight,
+      top: _mq.padding.top,
       left: 0,
       child: Transform.scale(
         scale: _scaleValue,

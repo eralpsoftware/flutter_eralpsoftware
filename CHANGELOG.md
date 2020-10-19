@@ -117,3 +117,7 @@
 ## [0.1.61] Eralp Notification Bar
 
 * Notification animation added.
+  
+## [0.1.62] Eralp Notification Bar padding
+
+* Eralp Notification Bar padding fixed.
