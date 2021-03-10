@@ -85,7 +85,6 @@ class _EralpSoftState extends State<EralpSoft> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
       key: _globalScaffoldKey,
       body: widget.child,
     );
@@ -93,8 +92,11 @@ class _EralpSoftState extends State<EralpSoft> {
 }
 
 class Eralp {
-  static Widget builder(
-      {@required BuildContext context, @required Widget child}) {
+  static Widget builder({
+    @required BuildContext context,
+    @required Widget child,
+    bool isNavBar,
+  }) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: EralpSoft(
@@ -111,6 +113,7 @@ class Eralp {
   }
 
   static void showSnackBar({@required SnackBar snackBar}) {
+    _globalProvider.globalScaffoldKey.currentState.removeCurrentSnackBar();
     _globalProvider.globalScaffoldKey.currentState.showSnackBar(snackBar);
   }
 

@@ -53,6 +53,7 @@ class RegisterValidator {
     if (value1.trim().length < 8) {
       return "Şifre en az 8 karakter olmalı";
     }
+
     if (value1.trim().length > 18) {
       return "Şifre en fazla 18 karakter olmalı";
     }

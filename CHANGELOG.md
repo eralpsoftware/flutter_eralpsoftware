@@ -121,3 +121,11 @@
 ## [0.1.62] Eralp Notification Bar padding
 
 * Eralp Notification Bar padding fixed.
+  
+## [0.1.63] Snackbar dismiss
+
+* Snackbar dismiss fixed.
+  
+## [0.1.7] resizeToAvoidBottomInset deleted
+
+* resizeToAvoidBottomInset deleted.
