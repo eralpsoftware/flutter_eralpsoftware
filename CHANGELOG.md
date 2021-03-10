@@ -129,3 +129,6 @@
 ## [0.1.7] resizeToAvoidBottomInset deleted
 
 * resizeToAvoidBottomInset deleted.
+## [1.0.0] Stable Version
+
+* Stable Version.
