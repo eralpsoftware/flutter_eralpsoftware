@@ -10,6 +10,8 @@ import 'package:eralpsoftware/providers/stream_provider.dart';
 import 'package:eralpsoftware/validators/validators.dart';
 import 'package:flutter/material.dart';
 
+/// Null-safety ekleniyor
+
 final GlobalProvider _globalProvider = GlobalProvider();
 
 /// Bu calculator class'i gonderilen value'ye 1 ekler.
