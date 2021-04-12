@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 import 'dart:math';
 
 class NumericTextFormatter extends TextInputFormatter {
-  String _mask;
-  List<String> _maskChars;
-  Map<String, RegExp> _maskFilter;
+  late String _mask;
+  late List<String> _maskChars;
+  late Map<String, RegExp> _maskFilter;
 
-  int _maskLength;
+  int? _maskLength;
   final _resultTextArray = <String>[];
   String _resultTextMasked = "";
 
@@ -20,7 +20,7 @@ class NumericTextFormatter extends TextInputFormatter {
   //   updateMask(mask, filter: filter ?? {"#": RegExp(r'[0-9]'), "A": RegExp(r'[^0-9]')});
   // }
   NumericTextFormatter(
-      {String mask = "(###) ###-##-##", Map<String, RegExp> filter})
+      {String mask = "(###) ###-##-##", Map<String, RegExp>? filter})
       : assert(mask != null),
         assert(mask.isNotEmpty) {
     updateMask(mask,
@@ -28,7 +28,7 @@ class NumericTextFormatter extends TextInputFormatter {
   }
 
   /// Change the mask
-  TextEditingValue updateMask(String mask, {Map<String, RegExp> filter}) {
+  TextEditingValue updateMask(String mask, {Map<String, RegExp>? filter}) {
     _mask = mask;
     if (filter != null) {
       _updateFilter(filter);
@@ -61,18 +61,18 @@ class NumericTextFormatter extends TextInputFormatter {
     return _resultTextArray.length == _maskLength;
   }
 
-  TextEditingValue _lastResValue;
-  TextEditingValue _lastNewValue;
+  TextEditingValue? _lastResValue;
+  TextEditingValue? _lastNewValue;
 
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
     if (_lastResValue == oldValue && newValue == _lastNewValue) {
-      return _lastResValue;
+      return _lastResValue!;
     }
     _lastNewValue = newValue;
     _lastResValue = _formatUpdate(oldValue, newValue);
-    return _lastResValue;
+    return _lastResValue!;
   }
 
   TextEditingValue _formatUpdate(
@@ -149,11 +149,11 @@ class NumericTextFormatter extends TextInputFormatter {
 
       bool curTextInRange = curTextPos < _resultTextArray.length;
 
-      String curTextChar;
+      String? curTextChar;
       if (isMaskChar && curTextInRange) {
         while (curTextChar == null && curTextInRange) {
           final String potentialTextChar = _resultTextArray[curTextPos];
-          if (_maskFilter[curMaskChar].hasMatch(potentialTextChar)) {
+          if (_maskFilter[curMaskChar]!.hasMatch(potentialTextChar)) {
             curTextChar = potentialTextChar;
           } else {
             _resultTextArray.removeAt(curTextPos);
@@ -166,7 +166,7 @@ class NumericTextFormatter extends TextInputFormatter {
       }
 
       if (isMaskChar && curTextInRange) {
-        _resultTextMasked += curTextChar;
+        _resultTextMasked += curTextChar!;
         if (curTextPos == targetCursorPosition && cursorPos == -1) {
           cursorPos = maskPos - nonMaskedCount;
         }
@@ -197,8 +197,8 @@ class NumericTextFormatter extends TextInputFormatter {
       cursorPos -= nonMaskedCount;
     }
 
-    if (_resultTextArray.length > _maskLength) {
-      _resultTextArray.removeRange(_maskLength, _resultTextArray.length);
+    if (_resultTextArray.length > _maskLength!) {
+      _resultTextArray.removeRange(_maskLength!, _resultTextArray.length);
     }
 
     int finalCursorPosition =
@@ -223,7 +223,7 @@ class NumericTextFormatter extends TextInputFormatter {
     _maskLength = 0;
     for (int i = 0; i < _mask.length; i++) {
       if (_maskChars.contains(_mask[i])) {
-        _maskLength++;
+        _maskLength = _maskLength! + 1;
       }
     }
   }

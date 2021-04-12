@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class EralpNotificationWidget extends StatefulWidget {
   final BuildContext context;
   final Widget child;
-  final Duration progressAnimationDuration;
-  final bool showProgressIndicator;
-  final Color progressBackgroundColor;
-  final Color progressValueColor;
+  final Duration? progressAnimationDuration;
+  final bool? showProgressIndicator;
+  final Color? progressBackgroundColor;
+  final Color? progressValueColor;
   EralpNotificationWidget({
-    Key key,
-    @required this.child,
-    @required this.context,
+    Key? key,
+    required this.child,
+    required this.context,
     this.progressAnimationDuration,
     this.showProgressIndicator,
     this.progressBackgroundColor = Colors.grey,
@@ -24,15 +24,15 @@ class EralpNotificationWidget extends StatefulWidget {
 
 class _EralpNotificationWidgetState extends State<EralpNotificationWidget>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation animation;
+  late AnimationController controller;
+  late Animation animation;
 
-  AnimationController _opacityController;
-  Animation _opacityAnimation;
+  late AnimationController _opacityController;
+  late Animation _opacityAnimation;
   double _opacityValue = 0;
 
-  AnimationController _scaleController;
-  Animation _scaleAnimation;
+  late AnimationController _scaleController;
+  late Animation _scaleAnimation;
   double _scaleValue = 0;
 
   @override
@@ -71,12 +71,12 @@ class _EralpNotificationWidgetState extends State<EralpNotificationWidget>
                 padding: EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    widget.showProgressIndicator
+                    widget.showProgressIndicator!
                         ? Container(
                             width: _mq.size.width,
                             child: LinearProgressIndicator(
                               value: animation.value,
-                              valueColor: AlwaysStoppedAnimation<Color>(
+                              valueColor: AlwaysStoppedAnimation<Color?>(
                                   widget.progressValueColor),
                               backgroundColor: widget.progressBackgroundColor,
                             ),
@@ -96,7 +96,7 @@ class _EralpNotificationWidgetState extends State<EralpNotificationWidget>
     );
   }
 
-  void _startAnimation(Duration duration) {
+  void _startAnimation(Duration? duration) {
     controller = AnimationController(duration: duration, vsync: this);
     animation = Tween<double>(begin: 0, end: 1).animate(controller)
       ..addListener(() {
@@ -109,9 +109,9 @@ class _EralpNotificationWidgetState extends State<EralpNotificationWidget>
   void _startOpacityAnimation() {
     _opacityController = AnimationController(
         duration: Duration(
-          milliseconds: widget.progressAnimationDuration.inMilliseconds > 999
+          milliseconds: widget.progressAnimationDuration!.inMilliseconds > 999
               ? 250
-              : widget.progressAnimationDuration.inMilliseconds / 4,
+              : widget.progressAnimationDuration!.inMilliseconds / 4 as int,
         ),
         vsync: this);
     _opacityAnimation =
@@ -126,9 +126,9 @@ class _EralpNotificationWidgetState extends State<EralpNotificationWidget>
   void _startScaleAnimation() {
     _scaleController = AnimationController(
         duration: Duration(
-          milliseconds: widget.progressAnimationDuration.inMilliseconds > 999
+          milliseconds: widget.progressAnimationDuration!.inMilliseconds > 999
               ? 250
-              : widget.progressAnimationDuration.inMilliseconds / 4,
+              : widget.progressAnimationDuration!.inMilliseconds / 4 as int,
         ),
         vsync: this);
     _scaleAnimation = Tween<double>(begin: 0, end: 1).animate(_scaleController)

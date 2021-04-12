@@ -22,9 +22,9 @@ class Calculator {
 
 class XdHelper {
   static double getScaledFontSize({
-    @required Size size,
-    @required double fontSize,
-    @required Size xdScreenSize,
+    required Size size,
+    required double fontSize,
+    required Size xdScreenSize,
   }) {
     double sizeRatio = sqrt(pow(size.height, 2) + pow(size.width, 2));
     double xdRatio =
@@ -33,9 +33,9 @@ class XdHelper {
   }
 
   static double getScaledDouble({
-    @required Size size,
-    @required double xdDouble,
-    @required Size xdScreenSize,
+    required Size size,
+    required double xdDouble,
+    required Size xdScreenSize,
   }) {
     double sizeRatio = sqrt(pow(size.height, 2) + pow(size.width, 2));
     double xdRatio =
@@ -44,9 +44,9 @@ class XdHelper {
   }
 
   static Size getScaledSize({
-    @required Size size,
-    @required Size xdContainerSize,
-    @required Size xdScreenSize,
+    required Size size,
+    required Size xdContainerSize,
+    required Size xdScreenSize,
   }) {
     sqrt(pow(xdScreenSize.height, 2) + pow(xdScreenSize.width, 2));
     return Size(
@@ -60,9 +60,9 @@ class EralpSoft extends StatefulWidget {
   final BuildContext context;
   final MaterialApp child;
   EralpSoft({
-    Key key,
-    @required this.context,
-    @required this.child,
+    Key? key,
+    required this.context,
+    required this.child,
   }) : super(key: key);
 
   @override
@@ -70,14 +70,14 @@ class EralpSoft extends StatefulWidget {
 }
 
 class _EralpSoftState extends State<EralpSoft> {
-  GlobalKey<ScaffoldState> _globalScaffoldKey;
+  GlobalKey<ScaffoldState>? _globalScaffoldKey;
 
   @override
   void initState() {
     super.initState();
     _globalScaffoldKey = GlobalKey<ScaffoldState>();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       _globalProvider.globalContext = context;
       _globalProvider.globalScaffoldKey = _globalScaffoldKey;
     });
@@ -95,15 +95,15 @@ class _EralpSoftState extends State<EralpSoft> {
 
 class Eralp {
   static Widget builder({
-    @required BuildContext context,
-    @required Widget child,
-    bool isNavBar,
+    required BuildContext context,
+    required Widget child,
+    bool? isNavBar,
   }) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: EralpSoft(
         context: context,
-        child: child,
+        child: child as MaterialApp,
       ),
     );
   }
@@ -114,22 +114,22 @@ class Eralp {
     return _navigatorKey;
   }
 
-  static void showSnackBar({@required SnackBar snackBar}) {
-    _globalProvider.globalScaffoldKey.currentState.removeCurrentSnackBar();
-    _globalProvider.globalScaffoldKey.currentState.showSnackBar(snackBar);
+  static void showSnackBar({required SnackBar snackBar}) {
+    _globalProvider.globalScaffoldKey!.currentState!.removeCurrentSnackBar();
+    _globalProvider.globalScaffoldKey!.currentState!.showSnackBar(snackBar);
   }
 
   static void showAlertDialog({
     bool dismissible = true,
-    Widget title,
-    Widget content,
+    Widget? title,
+    Widget? content,
     Color backgroundColor = Colors.white,
-    String okString,
-    Function onOkPressed,
+    String? okString,
+    Function? onOkPressed,
   }) {
     showDialog(
       barrierDismissible: dismissible,
-      context: _globalProvider.globalContext,
+      context: _globalProvider.globalContext!,
       builder: (context) {
         return AlertDialog(
           backgroundColor: backgroundColor,
@@ -137,10 +137,10 @@ class Eralp {
           content: content,
           actions: <Widget>[
             FlatButton(
-              child: Text(okString),
+              child: Text(okString!),
               onPressed: () {
-                Navigator.pop(_globalProvider.globalContext);
-                onOkPressed();
+                Navigator.pop(_globalProvider.globalContext!);
+                onOkPressed!();
               },
             ),
           ],
@@ -152,10 +152,10 @@ class Eralp {
   static void showProgress() {
     showDialog(
       barrierDismissible: false,
-      context: _globalProvider.globalContext,
+      context: _globalProvider.globalContext!,
       builder: (context) {
         Future.delayed(Duration(seconds: 3), () {
-          Navigator.pop(_globalProvider.globalContext);
+          Navigator.pop(_globalProvider.globalContext!);
           print("asdasd");
         });
         return AlertDialog(
@@ -167,26 +167,26 @@ class Eralp {
     );
   }
 
-  static void startProgress({@required int maxSecond, @required Widget child}) {
+  static void startProgress({required int maxSecond, required Widget child}) {
     StreamProvider _streamProvider = StreamProvider();
     _streamProvider.isLoading = true;
     int count = 0;
 
     showDialog(
       barrierDismissible: false,
-      context: _globalProvider.globalContext,
+      context: _globalProvider.globalContext!,
       builder: (context) {
         Timer.periodic(const Duration(milliseconds: 250), (Timer t) {
           count++;
           if (!_streamProvider.isLoading) {
             t.cancel();
             // Navigator.pop(_globalProvider.globalContext);
-            Navigator.of(_globalProvider.globalContext, rootNavigator: true)
+            Navigator.of(_globalProvider.globalContext!, rootNavigator: true)
                 .pop();
           } else if (count >= maxSecond * 4) {
             t.cancel();
             // Navigator.pop(_globalProvider.globalContext);
-            Navigator.of(_globalProvider.globalContext, rootNavigator: true)
+            Navigator.of(_globalProvider.globalContext!, rootNavigator: true)
                 .pop();
           }
         });
@@ -210,18 +210,18 @@ class Eralp {
   }
 
   static void startProgressForXSecond(
-      {@required double second, @required Widget child}) {
+      {required double second, required Widget child}) {
     int count = 0;
 
     showDialog(
       barrierDismissible: false,
-      context: _globalProvider.globalContext,
+      context: _globalProvider.globalContext!,
       builder: (context) {
         Timer.periodic(const Duration(milliseconds: 250), (Timer t) {
           count++;
           if (count >= (second * 4).toInt()) {
             t.cancel();
-            Navigator.of(_globalProvider.globalContext, rootNavigator: true)
+            Navigator.of(_globalProvider.globalContext!, rootNavigator: true)
                 .pop();
           }
         });
@@ -243,7 +243,7 @@ class Eralp {
   static void showUndismissibleAlertDialog() {
     showDialog(
       barrierDismissible: false,
-      context: _globalProvider.globalContext,
+      context: _globalProvider.globalContext!,
       builder: (context) {
         return AlertDialog(
           title: Text("undismissible alert dialog"),
@@ -251,7 +251,7 @@ class Eralp {
             FlatButton(
               child: Text("ok"),
               onPressed: () {
-                Navigator.pop(_globalProvider.globalContext);
+                Navigator.pop(_globalProvider.globalContext!);
               },
             ),
           ],
@@ -270,11 +270,11 @@ class Eralp {
   }
 
   static void showEralpNotification({
-    @required Widget child,
-    Duration duration,
-    bool showProgressIndicator,
-    final Color progressBackgroundColor,
-    final Color progressValueColor,
+    required Widget child,
+    Duration? duration,
+    bool? showProgressIndicator,
+    final Color? progressBackgroundColor,
+    final Color? progressValueColor,
   }) {
     final _showEralpBar = ShowEralpNotification(
       child: child,
@@ -283,6 +283,6 @@ class Eralp {
       progressBackgroundColor: progressBackgroundColor,
       progressValueColor: progressValueColor,
     );
-    _showEralpBar.show(_globalProvider.globalContext);
+    _showEralpBar.show(_globalProvider.globalContext!);
   }
 }

@@ -1,7 +1,7 @@
 import 'package:eralpsoftware/helpers/number_helper.dart';
 
 class RegisterValidator {
-  String fullnameValidator(String value) {
+  String? fullnameValidator(String value) {
     if (value.isEmpty) {
       return "Tam isim boş olamaz";
     }
@@ -17,7 +17,7 @@ class RegisterValidator {
     return null;
   }
 
-  String mailValidator(String value) {
+  String? mailValidator(String value) {
     final _regExp = RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
@@ -33,7 +33,7 @@ class RegisterValidator {
     return null;
   }
 
-  String passwordValidator(String value) {
+  String? passwordValidator(String value) {
     if (value.isEmpty) {
       return "Şifre boş olamaz";
     }
@@ -46,7 +46,7 @@ class RegisterValidator {
     return null;
   }
 
-  String passwordAgainValidator(String value1, String value2) {
+  String? passwordAgainValidator(String value1, String value2) {
     if (value1.isEmpty) {
       return "Şifre onayla boş olamaz";
     }
@@ -63,7 +63,7 @@ class RegisterValidator {
     return null;
   }
 
-  String phoneValidator(String value) {
+  String? phoneValidator(String value) {
     if (value.isEmpty) {
       return "Telefon numarası boş olamaz";
     }
@@ -73,7 +73,7 @@ class RegisterValidator {
     return null;
   }
 
-  String dateTimeValidator(DateTime value) {
+  String? dateTimeValidator(DateTime value) {
     if (value == null) {
       return "Tarih girmelisiniz";
     }
