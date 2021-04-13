@@ -4,20 +4,20 @@ import 'dart:async';
 
 class ShowEralpNotification {
   final Widget child;
-  final Duration duration;
-  final bool showProgressIndicator;
-  final Color progressBackgroundColor;
-  final Color progressValueColor;
+  final Duration? duration;
+  final bool? showProgressIndicator;
+  final Color? progressBackgroundColor;
+  final Color? progressValueColor;
 
   ShowEralpNotification({
-    @required this.child,
+    required this.child,
     this.duration,
     this.showProgressIndicator,
     this.progressBackgroundColor,
     this.progressValueColor,
   });
   void show(BuildContext context) async {
-    OverlayState overlayState = Overlay.of(context);
+    OverlayState overlayState = Overlay.of(context)!;
     OverlayEntry overlayEntry = new OverlayEntry(
       builder: (ctx) {
         return EralpNotificationWidget(
